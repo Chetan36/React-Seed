@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 
 import HeaderComponent from "../../components/header/index";
-import "./styles.css";
+import styles from './styles';
 
 class Orders extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
     }
 
@@ -15,7 +14,9 @@ class Orders extends Component {
         return(
             <div>
                 <HeaderComponent />
-                <h1>You are in Orders component</h1>
+                <div style={styles.textDiv}>
+                    <h1>You are in Orders component</h1>
+                </div>
             </div>
         )
     }

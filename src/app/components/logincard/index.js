@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -19,11 +18,29 @@ function LoginCard(props) {
                 <Typography gutterBottom variant="h5" component="h2">
                     LOGIN
                 </Typography>
-
+                <TextField
+                    id="loginId"
+                    label="Login ID"
+                    placeholder="Enter your Login ID"
+                    className={classes.textField}
+                    margin="normal"
+                    fullWidth
+                />
+                <TextField
+                    id="password"
+                    label="Login Password"
+                    placeholder="Enter your Login Password"
+                    className={classes.textField}
+                    margin="normal"
+                    type="password"
+                    fullWidth
+                />
+                <div style={{ marginTop: 10 }}>
+                    <Button variant="contained" color="primary" className={classes.button}>
+                        Login
+                    </Button>
+                </div>
             </CardContent>
-            <CardActions>
-                
-            </CardActions>
         </Card>
     )
 }

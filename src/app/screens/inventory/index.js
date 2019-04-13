@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 
 import HeaderComponent from "../../components/header/index";
-import "./styles.css";
+import styles from './styles';
 
 class Inventory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
     }
 
@@ -15,7 +14,9 @@ class Inventory extends Component {
         return(
             <div>
                 <HeaderComponent />
-                <h1>You are in Inventory component</h1>
+                <div style={styles.textDiv}>
+                    <h1>You are in Inventory component</h1>
+                </div>
             </div>
         )
     }

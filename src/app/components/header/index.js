@@ -105,7 +105,7 @@ class HeaderComponent extends Component {
                   <MenuIcon />
                 </IconButton>
                 <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                  Chetan's App
+                  Boilerplate
                 </Typography>
                 <div className={classes.search}>
                   <div className={classes.searchIcon}>

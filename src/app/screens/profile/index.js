@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import HeaderComponent from "../../components/header/index";
-import "./styles.css";
+import styles from './styles';
 
 class Profile extends Component {
     constructor(props) {
@@ -14,7 +14,9 @@ class Profile extends Component {
         return(
             <div>
                 <HeaderComponent />
-                <h1>You are in Profile component</h1>
+                <div style={styles.textDiv}>
+                    <h1>You are in Profile component</h1>
+                </div>
             </div>
         )
     }
