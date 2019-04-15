@@ -3,7 +3,6 @@ import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -42,7 +41,8 @@ class LoginCard extends Component {
         this.setState({ [name]: event.target.value });
     };
 
-    loginClicked = () => {
+    loginUser = () => {
+        this.props.login(this.state.loginId, this.state.password);
     }
 
     render() {
@@ -76,13 +76,10 @@ class LoginCard extends Component {
                         value={this.state.password}
                         onChange={this.handleChange("password")}
                     />
-                    <Button variant="contained" color="primary" className={classes.button} onClick={this.loginClicked}>
+                    <Button variant="contained" color="primary" className={classes.button} onClick={this.loginUser}>
                         Login
                     </Button>
                 </CardContent>
-                <CardActions>
-                    
-                </CardActions>
             </Card>
         )
     }

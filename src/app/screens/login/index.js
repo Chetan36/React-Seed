@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { withRouter } from "react-router-dom";
 import LoginCard from "./components/logincard";
 import "./styles.css";
 
@@ -10,13 +10,17 @@ class Login extends Component {
         }
     }
 
+    loginUser = (loginId, password) => {
+        this.props.history.push('/home')
+    }
+
     render() {
         return(
             <div align="center" style={{marginTop: 100}}>
-                <LoginCard />
+                <LoginCard login={this.loginUser} />
             </div>
         )
     }
 }
 
-export default Login;
+export default withRouter(Login);
