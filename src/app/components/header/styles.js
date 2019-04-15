@@ -68,6 +68,9 @@ const styles = theme => ({
           display: 'none',
         },
     },
+    list: {
+        width: 250,
+    },
 });
 
 

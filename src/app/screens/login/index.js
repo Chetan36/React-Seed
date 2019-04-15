@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import LoginCard from "../../components/logincard/index";
+import LoginCard from "./components/logincard";
 import "./styles.css";
 
 class Login extends Component {
