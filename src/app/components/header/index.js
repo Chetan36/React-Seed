@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,6 +20,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import HomeIcon from '@material-ui/icons/Home'
+import PersonIcon from '@material-ui/icons/Person'
+import ReceiptIcon from '@material-ui/icons/Receipt'
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft'
 
 import styles from './styles';
 
@@ -55,6 +58,10 @@ class HeaderComponent extends React.Component {
     });
   };
 
+  handleLogout = () => {
+    console.log('Logout clicked');
+  }
+
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
@@ -71,6 +78,7 @@ class HeaderComponent extends React.Component {
       >
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Logout</MenuItem>
       </Menu>
     );
 
@@ -110,21 +118,26 @@ class HeaderComponent extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button key="home">
+              <ListItemIcon><HomeIcon /></ListItemIcon>
+              <ListItemText primary="Home" />
             </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button key="profile">
+              <ListItemIcon><PersonIcon /></ListItemIcon>
+              <ListItemText primary="Profile" />
             </ListItem>
-          ))}
+            <ListItem button key="orders">
+              <ListItemIcon><ReceiptIcon /></ListItemIcon>
+              <ListItemText primary="Orders" />
+            </ListItem>
+            <ListItem button key="inventory">
+              <ListItemIcon><AccountBalanceIcon /></ListItemIcon>
+              <ListItemText primary="Inventory" />
+            </ListItem>
+            <ListItem button key="logout" onClick={this.handleLogout}>
+              <ListItemIcon><KeyboardArrowLeftIcon /></ListItemIcon>
+              <ListItemText primary="Logout" />
+            </ListItem>
         </List>
       </div>
     );
