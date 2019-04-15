@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from "react-router-dom";
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -58,8 +59,24 @@ class HeaderComponent extends React.Component {
     });
   };
 
+  homeClicked = () => {
+    this.props.history.push('/home')
+  }
+
+  profileClicked = () => {
+    this.props.history.push('/profile')
+  }
+
+  ordersClicked = () => {
+    this.props.history.push('/orders')
+  }
+
+  inventoryClicked = () => {
+    this.props.history.push('/inventory')
+  }
+
   handleLogout = () => {
-    console.log('Logout clicked');
+    this.props.history.push('/')
   }
 
   render() {
@@ -118,26 +135,26 @@ class HeaderComponent extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-            <ListItem button key="home">
-              <ListItemIcon><HomeIcon /></ListItemIcon>
-              <ListItemText primary="Home" />
-            </ListItem>
-            <ListItem button key="profile">
-              <ListItemIcon><PersonIcon /></ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItem>
-            <ListItem button key="orders">
-              <ListItemIcon><ReceiptIcon /></ListItemIcon>
-              <ListItemText primary="Orders" />
-            </ListItem>
-            <ListItem button key="inventory">
-              <ListItemIcon><AccountBalanceIcon /></ListItemIcon>
-              <ListItemText primary="Inventory" />
-            </ListItem>
-            <ListItem button key="logout" onClick={this.handleLogout}>
-              <ListItemIcon><KeyboardArrowLeftIcon /></ListItemIcon>
-              <ListItemText primary="Logout" />
-            </ListItem>
+          <ListItem button key="home" onClick={this.homeClicked}>
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <ListItem button key="profile" onClick={this.profileClicked}>
+            <ListItemIcon><PersonIcon /></ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+          <ListItem button key="orders" onClick={this.ordersClicked}>
+            <ListItemIcon><ReceiptIcon /></ListItemIcon>
+            <ListItemText primary="Orders" />
+          </ListItem>
+          <ListItem button key="inventory" onClick={this.inventoryClicked}>
+            <ListItemIcon><AccountBalanceIcon /></ListItemIcon>
+            <ListItemText primary="Inventory" />
+          </ListItem>
+          <ListItem button key="logout" onClick={this.handleLogout}>
+            <ListItemIcon><KeyboardArrowLeftIcon /></ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItem>
         </List>
       </div>
     );
@@ -217,4 +234,4 @@ HeaderComponent.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(HeaderComponent);
+export default withRouter(withStyles(styles)(HeaderComponent));
