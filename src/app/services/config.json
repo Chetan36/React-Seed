@@ -1,0 +1,4 @@
+{
+    "inventoryUrl": "http://localhost:8000",
+    "orderUrl": "http://localhost:8001"
+}

@@ -26,6 +26,7 @@ import PersonIcon from '@material-ui/icons/Person'
 import ReceiptIcon from '@material-ui/icons/Receipt'
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft'
+import Divider from '@material-ui/core/Divider';
 
 import styles from './styles';
 
@@ -93,9 +94,9 @@ class HeaderComponent extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
+        <MenuItem onClick={this.profileClicked}>Profile</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>Logout</MenuItem>
+        <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
       </Menu>
     );
 
@@ -134,6 +135,10 @@ class HeaderComponent extends React.Component {
     
     const sideList = (
       <div className={classes.list}>
+        <div className={classes.toolbar}>
+
+        </div>
+        <Divider />
         <List>
           <ListItem button key="home" onClick={this.homeClicked}>
             <ListItemIcon><HomeIcon /></ListItemIcon>

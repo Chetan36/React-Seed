@@ -2,7 +2,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const styles = theme => ({
   list: {
-    width: 250,
+    width: 350,
   },
   fullList: {
     width: 'auto',
@@ -73,6 +73,9 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
+  },
+  toolbar: {
+    height: 60
   },
 });
 
