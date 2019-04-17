@@ -1,149 +1,168 @@
-// import React, { Component } from "react";
-
-
-
-// import Snackbar from '@material-ui/core/Snackbar';
-// import Slide from '@material-ui/core/Slide';
-// import Button from '@material-ui/core/Button';
-
-// function TransitionUp(props) {
-//     return <Slide {...props} direction="up" />;
-// }
-
-// class Inventory extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             products: [],
-//             snackbarOpen: false,
-//             Transition: null
-//         }
-//     }
-
-    
-
-    
-
-//     handleClick = Transition => () => {
-//         this.setState({ snackbarOpen: true, Transition });
-//     };
-
-//     closeSnackbar() {
-//         this.setState({ snackbarOpen: false });
-//     }
-
-//     render() {
-//         const snackbar = (
-//             <Snackbar
-//                 open={this.state.snackbarOpen}
-//                 onClose={this.closeSnackbar}
-//                 TransitionComponent={this.state.Transition}
-//                 anchorOrigin={{
-//                     vertical: 'bottom',
-//                     horizontal: 'left',
-//                 }}
-//                 message={<span id="message-id">This is the message</span>}
-//             />
-//         );
-
-//         return(
-//             <div>
-//                 <HeaderComponent />
-//                 <div style={styles.textDiv}>
-//                     <h1>You are in Inventory component</h1>
-//                     <Button onClick={this.handleClick(TransitionUp)}>Click me</Button>
-//                 </div>
-//                 {snackbar}
-//             </div>
-//         )
-//     }
-// }
-
-// export default Inventory;
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import ErrorIcon from '@material-ui/icons/Error';
+import InfoIcon from '@material-ui/icons/Info';
+import CloseIcon from '@material-ui/icons/Close';
+import green from '@material-ui/core/colors/green';
+import amber from '@material-ui/core/colors/amber';
+import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
-import HeaderComponent from "../../components/header/index";
-import styles from './styles';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import WarningIcon from '@material-ui/icons/Warning';
+import { withStyles } from '@material-ui/core/styles';
 
-import { getAllProducts } from '../../services/inventory.service';
+import HeaderComponent from '../../components/header/index';
+
+const variantIcon = {
+  success: CheckCircleIcon,
+  warning: WarningIcon,
+  error: ErrorIcon,
+  info: InfoIcon,
+};
+
+const styles1 = theme => ({
+  success: {
+    backgroundColor: green[600],
+  },
+  error: {
+    backgroundColor: theme.palette.error.dark,
+  },
+  info: {
+    backgroundColor: theme.palette.primary.dark,
+  },
+  warning: {
+    backgroundColor: amber[700],
+  },
+  icon: {
+    fontSize: 20,
+  },
+  iconVariant: {
+    opacity: 0.9,
+    marginRight: theme.spacing.unit,
+  },
+  message: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
+
+function MySnackbarContent(props) {
+  const { classes, className, message, onClose, variant, ...other } = props;
+  const Icon = variantIcon[variant];
+
+  return (
+    <SnackbarContent
+      className={classNames(classes[variant], className)}
+      aria-describedby="client-snackbar"
+      message={
+        <span id="client-snackbar" className={classes.message}>
+          <Icon className={classNames(classes.icon, classes.iconVariant)} />
+          {message}
+        </span>
+      }
+      action={[
+        <IconButton
+          key="close"
+          aria-label="Close"
+          color="inherit"
+          className={classes.close}
+          onClick={onClose}
+        >
+          <CloseIcon className={classes.icon} />
+        </IconButton>,
+      ]}
+      {...other}
+    />
+  );
+}
+
+MySnackbarContent.propTypes = {
+  classes: PropTypes.object.isRequired,
+  className: PropTypes.string,
+  message: PropTypes.node,
+  onClose: PropTypes.func,
+  variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
+};
+
+const MySnackbarContentWrapper = withStyles(styles1)(MySnackbarContent);
+
+const styles2 = theme => ({
+  margin: {
+    margin: theme.spacing.unit,
+  },
+});
 
 class Inventory extends React.Component {
-    state = {
-        open: false,
-        products: []
-    };
+  state = {
+    open: false,
+  };
 
-    componentDidMount() {
-        this.getProducts();
-    }
-    
-    handleClick = () => {
-        this.setState({ open: true });
-    };
-    
-    handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-          return;
-        }
-    
-        this.setState({ open: false });
-    };
+  handleClick = () => {
+    this.setState({ open: true });
+  };
 
-    getProducts() {
-        getAllProducts().then(response => {
-            console.log('Hey there, you just hit me');
-        })
-        .catch(error => {
-            console.error(error);
-        });
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
     }
 
-    render() {
-        const { classes } = this.props;
-        return (
-          <div>
-            <HeaderComponent />
-            <Button onClick={this.handleClick}>Open simple snackbar</Button>
-            <Snackbar
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
-              open={this.state.open}
-              autoHideDuration={6000}
-              onClose={this.handleClose}
-              ContentProps={{
-                'aria-describedby': 'message-id',
-              }}
-              message={<span id="message-id">This is the simple message</span>}
-              action={[
-                <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
-                  UNDO
-                </Button>,
-                <IconButton
-                  key="close"
-                  aria-label="Close"
-                  color="inherit"
-                  className={classes.close}
-                  onClick={this.handleClose}
-                >
-                  <CloseIcon />
-                </IconButton>,
-              ]}
-            />
-          </div>
-        );
-    }
+    this.setState({ open: false });
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div>
+        <HeaderComponent />
+        <Button className={classes.margin} onClick={this.handleClick}>
+          Open success snackbar
+        </Button>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          open={this.state.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+        >
+          <MySnackbarContentWrapper
+            onClose={this.handleClose}
+            variant="success"
+            message="This is a success message!"
+          />
+        </Snackbar>
+        <MySnackbarContentWrapper
+          variant="error"
+          className={classes.margin}
+          message="This is an error message!"
+        />
+        <MySnackbarContentWrapper
+          variant="warning"
+          className={classes.margin}
+          message="This is a warning message!"
+        />
+        <MySnackbarContentWrapper
+          variant="info"
+          className={classes.margin}
+          message="This is an information message!"
+        />
+        <MySnackbarContentWrapper
+          variant="success"
+          className={classes.margin}
+          message="This is a success message!"
+        />
+      </div>
+    );
+  }
 }
 
 Inventory.propTypes = {
-    classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Inventory);
+export default withStyles(styles2)(Inventory);
