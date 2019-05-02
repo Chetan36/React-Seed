@@ -12,19 +12,15 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import HomeIcon from '@material-ui/icons/Home'
-import PersonIcon from '@material-ui/icons/Person'
 import ReceiptIcon from '@material-ui/icons/Receipt'
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
+import CallIcon from '@material-ui/icons/Call'
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft'
 import Divider from '@material-ui/core/Divider';
 
@@ -68,12 +64,12 @@ class HeaderComponent extends React.Component {
     this.props.history.push('/profile')
   }
 
-  ordersClicked = () => {
-    this.props.history.push('/orders')
+  trainingClicked = () => {
+    this.props.history.push('/training')
   }
 
-  inventoryClicked = () => {
-    this.props.history.push('/inventory')
+  callScriptsClicked = () => {
+    this.props.history.push('/callscripts')
   }
 
   handleLogout = () => {
@@ -140,21 +136,13 @@ class HeaderComponent extends React.Component {
         </div>
         <Divider />
         <List>
-          <ListItem button key="home" onClick={this.homeClicked}>
-            <ListItemIcon><HomeIcon /></ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
-          <ListItem button key="profile" onClick={this.profileClicked}>
-            <ListItemIcon><PersonIcon /></ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
-          <ListItem button key="orders" onClick={this.ordersClicked}>
+          <ListItem button key="training" onClick={this.trainingClicked}>
             <ListItemIcon><ReceiptIcon /></ListItemIcon>
-            <ListItemText primary="Orders" />
+            <ListItemText primary="Training Data" />
           </ListItem>
-          <ListItem button key="inventory" onClick={this.inventoryClicked}>
-            <ListItemIcon><AccountBalanceIcon /></ListItemIcon>
-            <ListItemText primary="Inventory" />
+          <ListItem button key="callscripts" onClick={this.callScriptsClicked}>
+            <ListItemIcon><CallIcon /></ListItemIcon>
+            <ListItemText primary="CallScripts" />
           </ListItem>
           <ListItem button key="logout" onClick={this.handleLogout}>
             <ListItemIcon><KeyboardArrowLeftIcon /></ListItemIcon>
@@ -172,20 +160,8 @@ class HeaderComponent extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              ReactSeed
+              CognitiveView Internal
             </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">

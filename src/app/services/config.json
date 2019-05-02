@@ -1,4 +1,3 @@
 {
-    "inventoryUrl": "http://localhost:8000",
-    "orderUrl": "http://localhost:8001"
+    "serverUrl": "http://localhost:3001/api"
 }

@@ -11,5 +11,5 @@ export function successSnackbar(message, open, closeCallback) {
       message={<span id="message-id">{message}</span>}
     />
   )
-  }
+}
   

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-
+import { Provider } from 'react-redux';
 import './styles.css'
 import Screens from './screens/index';
+
+import store from './store/index';
 
 class MainApp extends Component {
     constructor(props) {
@@ -12,7 +14,9 @@ class MainApp extends Component {
 
     render() {
         return (
-            <Screens />
+            <Provider store={store}>
+                <Screens />                
+            </Provider>
         )
     }
 }

@@ -32,7 +32,9 @@ class LoginCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loginId: "",
+            clientId: "",
+            tenantId: "",
+            username: "",
             password: ""
         }
     }
@@ -54,15 +56,37 @@ class LoginCard extends Component {
                         LOGIN
                     </Typography>
                     <TextField
-                        id="LoginId"
-                        label="Login ID"
-                        placeholder="Please enter your Login Id"
+                        id="ClientId"
+                        label="Client ID"
+                        placeholder="Please enter your Client Id"
                         helperText=""
                         fullWidth
                         className={classes.textField}
                         margin="normal"
-                        value={this.state.loginId}
-                        onChange={this.handleChange("loginId")}
+                        value={this.state.clientId}
+                        onChange={this.handleChange("clientId")}
+                    />
+                    <TextField
+                        id="TenantId"
+                        label="Tenant ID"
+                        placeholder="Please enter your Tenant Id"
+                        helperText=""
+                        fullWidth
+                        className={classes.textField}
+                        margin="normal"
+                        value={this.state.tenantId}
+                        onChange={this.handleChange("tenantId")}
+                    />
+                    <TextField
+                        id="Username"
+                        label="Username"
+                        placeholder="Please enter your Username"
+                        helperText=""
+                        fullWidth
+                        className={classes.textField}
+                        margin="normal"
+                        value={this.state.username}
+                        onChange={this.handleChange("username")}
                     />
                     <TextField
                         id="Password"
