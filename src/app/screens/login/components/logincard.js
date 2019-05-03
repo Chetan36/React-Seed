@@ -32,8 +32,6 @@ class LoginCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            clientId: "",
-            tenantId: "",
             username: "",
             password: ""
         }
@@ -55,28 +53,6 @@ class LoginCard extends Component {
                     <Typography gutterBottom variant="h5" component="h2">
                         LOGIN
                     </Typography>
-                    <TextField
-                        id="ClientId"
-                        label="Client ID"
-                        placeholder="Please enter your Client Id"
-                        helperText=""
-                        fullWidth
-                        className={classes.textField}
-                        margin="normal"
-                        value={this.state.clientId}
-                        onChange={this.handleChange("clientId")}
-                    />
-                    <TextField
-                        id="TenantId"
-                        label="Tenant ID"
-                        placeholder="Please enter your Tenant Id"
-                        helperText=""
-                        fullWidth
-                        className={classes.textField}
-                        margin="normal"
-                        value={this.state.tenantId}
-                        onChange={this.handleChange("tenantId")}
-                    />
                     <TextField
                         id="Username"
                         label="Username"

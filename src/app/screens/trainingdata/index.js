@@ -8,6 +8,13 @@ import { fetchTrainingData } from '../../actions/trainingDataActions';
 
 class TrainingData extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            trainingData: []
+        }
+    }
+
     componentDidMount() {
         this.props.fetchTrainingData();
     }
