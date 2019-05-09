@@ -15,7 +15,7 @@ class MainApp extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Screens />                
+                <Screens />
             </Provider>
         )
     }

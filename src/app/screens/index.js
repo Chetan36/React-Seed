@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Login from "./login/index";
-import TrainingData from "./trainingdata/index";
-import CallScripts from "./callscripts/index";
+import Dashboard from './dashboard/index';
+import Users from './users/index';
+import Items from './items/index';
 import ErrorScreen from "./error/index";
 
 class Screens extends Component {
@@ -17,8 +18,9 @@ class Screens extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route path="/" component={Login} exact />
-                    <Route path="/callscripts" component={CallScripts} />
-                    <Route path="/training" component={TrainingData} />
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/users" component={Users} />
+                    <Route path="/items" component={Items} />
                     <Route component={ErrorScreen} />
                 </Switch>
             </BrowserRouter>

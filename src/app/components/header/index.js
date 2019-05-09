@@ -20,6 +20,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ReceiptIcon from '@material-ui/icons/Receipt'
+import PersonIcon from '@material-ui/icons/Person';
 import CallIcon from '@material-ui/icons/Call'
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft'
 import Divider from '@material-ui/core/Divider';
@@ -56,20 +57,20 @@ class HeaderComponent extends React.Component {
     });
   };
 
-  homeClicked = () => {
-    this.props.history.push('/home')
+  dashboardClicked = () => {
+    this.props.history.push('/dashboard')
   }
 
   profileClicked = () => {
     this.props.history.push('/profile')
   }
 
-  trainingClicked = () => {
-    this.props.history.push('/training')
+  usersClicked = () => {
+    this.props.history.push('/users')
   }
 
-  callScriptsClicked = () => {
-    this.props.history.push('/callscripts')
+  itemsClicked = () => {
+    this.props.history.push('/items')
   }
 
   handleLogout = () => {
@@ -136,13 +137,17 @@ class HeaderComponent extends React.Component {
         </div>
         <Divider />
         <List>
-          <ListItem button key="training" onClick={this.trainingClicked}>
+          <ListItem button key="dashboard" onClick={this.dashboardClicked}>
             <ListItemIcon><ReceiptIcon /></ListItemIcon>
-            <ListItemText primary="Training Data" />
+            <ListItemText primary="Dashboard" />
           </ListItem>
-          <ListItem button key="callscripts" onClick={this.callScriptsClicked}>
+          <ListItem button key="users" onClick={this.usersClicked}>
+            <ListItemIcon><PersonIcon /></ListItemIcon>
+            <ListItemText primary="Users" />
+          </ListItem>
+          <ListItem button key="items" onClick={this.itemsClicked}>
             <ListItemIcon><CallIcon /></ListItemIcon>
-            <ListItemText primary="CallScripts" />
+            <ListItemText primary="Items" />
           </ListItem>
           <ListItem button key="logout" onClick={this.handleLogout}>
             <ListItemIcon><KeyboardArrowLeftIcon /></ListItemIcon>
@@ -160,7 +165,7 @@ class HeaderComponent extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              CognitiveView Internal
+              React Seed
             </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

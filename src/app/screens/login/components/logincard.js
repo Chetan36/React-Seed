@@ -32,7 +32,7 @@ class LoginCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            email: "",
             password: ""
         }
     }
@@ -42,7 +42,7 @@ class LoginCard extends Component {
     };
 
     loginUser = () => {
-        this.props.login(this.state.loginId, this.state.password);
+        this.props.login(this.state.email, this.state.password);
     }
 
     render() {
@@ -54,15 +54,15 @@ class LoginCard extends Component {
                         LOGIN
                     </Typography>
                     <TextField
-                        id="Username"
-                        label="Username"
-                        placeholder="Please enter your Username"
+                        id="Email"
+                        label="Email"
+                        placeholder="Please enter your Email"
                         helperText=""
                         fullWidth
                         className={classes.textField}
                         margin="normal"
-                        value={this.state.username}
-                        onChange={this.handleChange("username")}
+                        value={this.state.email}
+                        onChange={this.handleChange("email")}
                     />
                     <TextField
                         id="Password"

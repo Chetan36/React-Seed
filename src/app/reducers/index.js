@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import trainingDataReducer from './trainingDataReducer';
+import itemsReducer from './itemsReducer';
+import userReducer from './userReducer';
 
 export default combineReducers({
-    training: trainingDataReducer
+    itemState: itemsReducer,
+    userState: userReducer
 })

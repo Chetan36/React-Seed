@@ -11,7 +11,7 @@ class Login extends Component {
     }
 
     loginUser = (loginId, password) => {
-        this.props.history.push('/training')
+        this.props.history.push('/dashboard')
     }
 
     render() {
